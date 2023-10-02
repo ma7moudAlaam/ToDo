@@ -1,11 +1,47 @@
 import 'package:flutter/material.dart';
-import 'package:todo/pages/splash_view/splash_view.dart';
+import 'package:todo/pages/home_view/home_view.dart';
+import 'package:todo/pages/settings_view/settings_view.dart';
 
-class HomeLayoutView extends StatelessWidget {
-  const HomeLayoutView({super.key});
-static String routeName="home";
+class HomeLayoutView extends StatefulWidget {
+  HomeLayoutView({super.key});
+
+  static String routeName = "home";
+
+
+  @override
+  State<HomeLayoutView> createState() => _HomeLayoutViewState();
+}
+
+class _HomeLayoutViewState extends State<HomeLayoutView> {
+  int selectedIndex = 0;
+  List<Widget> screens = const[
+    HomeView(),
+    SettingView(),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return SplashView();
+    ThemeData theme = Theme.of(context);
+    return Scaffold(
+      body:screens[selectedIndex] ,
+      backgroundColor: theme.colorScheme.background,
+      bottomNavigationBar: BottomNavigationBar(
+          currentIndex: selectedIndex,
+          onTap: (index) {
+            setState(() {
+              selectedIndex = index;
+            });
+          },
+          items: const [
+            BottomNavigationBarItem(
+                label: "home",
+                icon: ImageIcon(AssetImage(
+                  "assets/images/Home icon.png",
+                ))),
+            BottomNavigationBarItem(
+                label: "settings",
+                icon: ImageIcon(AssetImage("assets/images/Settings icon.png")))
+          ]),
+    );
   }
 }

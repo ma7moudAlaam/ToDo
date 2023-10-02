@@ -12,12 +12,15 @@ class ApplicationToDo extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
 
-    return MaterialApp(initialRoute: SplashView.routeName,
+    return MaterialApp(
+debugShowCheckedModeBanner: false,
+      theme: ApplicationTheme.lightTheme,
+      initialRoute: SplashView.routeName,
     routes: {
       SplashView.routeName:(context) => const SplashView(),
-      HomeLayoutView.routeName:(context)=>const HomeLayoutView()
+      HomeLayoutView.routeName:(context)=> HomeLayoutView()
     },
-    theme: ApplicationTheme.lightTheme,
+
 
     );
   }
