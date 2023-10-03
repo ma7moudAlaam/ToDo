@@ -7,14 +7,13 @@ class HomeLayoutView extends StatefulWidget {
 
   static String routeName = "home";
 
-
   @override
   State<HomeLayoutView> createState() => _HomeLayoutViewState();
 }
 
 class _HomeLayoutViewState extends State<HomeLayoutView> {
   int selectedIndex = 0;
-  List<Widget> screens = const[
+  List<Widget> screens = const [
     HomeView(),
     SettingView(),
   ];
@@ -23,25 +22,50 @@ class _HomeLayoutViewState extends State<HomeLayoutView> {
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
     return Scaffold(
-      body:screens[selectedIndex] ,
+      floatingActionButton: CircleAvatar(
+        backgroundColor: Colors.white,
+        radius: 28,
+        child: CircleAvatar(
+          backgroundColor: Colors.white,
+          radius: 24,
+          child: FloatingActionButton(
+            onPressed: () {},
+            backgroundColor: theme.colorScheme.primary,
+            child: const Icon(
+              Icons.add,
+              size: 28,
+            ),
+          ),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      extendBody: true,
+      body: screens[selectedIndex],
       backgroundColor: theme.colorScheme.background,
-      bottomNavigationBar: BottomNavigationBar(
-          currentIndex: selectedIndex,
-          onTap: (index) {
-            setState(() {
-              selectedIndex = index;
-            });
-          },
-          items: const [
-            BottomNavigationBarItem(
-                label: "home",
-                icon: ImageIcon(AssetImage(
-                  "assets/images/Home icon.png",
-                ))),
-            BottomNavigationBarItem(
-                label: "settings",
-                icon: ImageIcon(AssetImage("assets/images/Settings icon.png")))
-          ]),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.white,
+        elevation: 0.0,
+        shape: const CircularNotchedRectangle(),
+        notchMargin: 10,
+        child: BottomNavigationBar(
+            currentIndex: selectedIndex,
+            onTap: (index) {
+              setState(() {
+                selectedIndex = index;
+              });
+            },
+            items: const [
+              BottomNavigationBarItem(
+                  label: "home",
+                  icon: ImageIcon(AssetImage(
+                    "assets/images/Home icon.png",
+                  ))),
+              BottomNavigationBarItem(
+                  label: "settings",
+                  icon:
+                      ImageIcon(AssetImage("assets/images/Settings icon.png")))
+            ]),
+      ),
     );
   }
 }

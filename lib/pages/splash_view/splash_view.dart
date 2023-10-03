@@ -8,7 +8,7 @@ class SplashView extends StatelessWidget {
 static String routeName="splash";
   @override
   Widget build(BuildContext context) {
-    Timer(const Duration(seconds: 3), () {Navigator.pushReplacementNamed(context, HomeLayoutView.routeName) ;});
+    Timer(const Duration(seconds: 1), () {Navigator.pushReplacementNamed(context, HomeLayoutView.routeName) ;});
     return Image.asset("assets/images/splash_light.png",fit: BoxFit.cover,);
   }
 }
