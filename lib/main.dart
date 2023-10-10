@@ -2,8 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:todo/core/theme/application_theme.dart';
 import 'package:todo/layout/home_layout/home_layout_view.dart';
 import 'package:todo/pages/splash_view/splash_view.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async{
+WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const ApplicationToDo());
 }
 class ApplicationToDo extends StatelessWidget{
