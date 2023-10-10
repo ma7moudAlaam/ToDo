@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo/layout/home_layout/widgets/bottom_Sheet_Widget.dart';
 import 'package:todo/pages/home_view/home_view.dart';
 import 'package:todo/pages/settings_view/settings_view.dart';
 
@@ -24,12 +25,15 @@ class _HomeLayoutViewState extends State<HomeLayoutView> {
     return Scaffold(
       floatingActionButton: CircleAvatar(
         backgroundColor: Colors.white,
-        radius: 28,
+        radius: 32,
         child: CircleAvatar(
           backgroundColor: Colors.white,
-          radius: 24,
+          radius: 28,
           child: FloatingActionButton(
-            onPressed: () {},
+            elevation: 0,
+            onPressed: () {
+              addNewTask(context);
+            },
             backgroundColor: theme.colorScheme.primary,
             child: const Icon(
               Icons.add,
@@ -46,7 +50,7 @@ class _HomeLayoutViewState extends State<HomeLayoutView> {
         color: Colors.white,
         elevation: 0.0,
         shape: const CircularNotchedRectangle(),
-        notchMargin: 10,
+        notchMargin: 8,
         child: BottomNavigationBar(
             currentIndex: selectedIndex,
             onTap: (index) {
@@ -66,6 +70,14 @@ class _HomeLayoutViewState extends State<HomeLayoutView> {
                       ImageIcon(AssetImage("assets/images/Settings icon.png")))
             ]),
       ),
+    );
+  }
+
+  void addNewTask(context) {
+    showModalBottomSheet(
+
+      context: context,
+      builder: (context) =>  BottomSheetWidegt(),
     );
   }
 }

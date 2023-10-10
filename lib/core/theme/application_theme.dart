@@ -22,7 +22,14 @@ class ApplicationTheme {
       textTheme: TextTheme(
           titleLarge: GoogleFonts.poppins(
               fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
+          bodyLarge: GoogleFonts.poppins(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: const Color(0xFF5D9CEC)),
           bodyMedium: GoogleFonts.poppins(
-              fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
-          bodySmall: GoogleFonts.poppins(fontSize: 12, color: Colors.white)));
+              fontSize: 15, fontWeight: FontWeight.bold, color: Colors.black),
+          bodySmall: GoogleFonts.poppins(fontSize: 12, color: Colors.black)),
+      bottomSheetTheme: BottomSheetThemeData(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(25)))));
 }
